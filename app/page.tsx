@@ -9,7 +9,6 @@ type TodoType = {
   id: string
   task: string,
   completed: boolean,
-  createdAt: Date
 }
 
 export default function Home() {
@@ -28,8 +27,7 @@ export default function Home() {
       const todo = {
         id: crypto.randomUUID(),
         task: todoTxt,
-        completed: false,
-        createdAt: new Date()
+        completed: false
       }
       setAllTodos([...allTodos, todo])
       setTodoTxt("")
@@ -77,7 +75,7 @@ export default function Home() {
         {
           allTodos.length > 0 ? (
             allTodos.map((todo) => (
-              <Todo key={todo.id} id={todo.id} completed={todo.completed} task={todo.task} createdAt={todo.createdAt} deleteTodo={deleteTodo} editTodo={editTodo} toggleCompleted={toggleCompleted} />
+              <Todo key={todo.id} id={todo.id} completed={todo.completed} task={todo.task} deleteTodo={deleteTodo} editTodo={editTodo} toggleCompleted={toggleCompleted} />
             ))
           ) : (
             <h1 className="text-xl text-center">No todo found.</h1>

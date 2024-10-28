@@ -12,13 +12,12 @@ type propType = {
     id: string,
     completed: boolean,
     task: string,
-    createdAt: string | Date,
     deleteTodo: (id: string) => void,
     editTodo: (id: string, task: string) => void,
     toggleCompleted: (id: string) => void
 }
 
-export default function Todo({ id, completed, task, createdAt, deleteTodo, editTodo, toggleCompleted }: propType) {
+export default function Todo({ id, completed, task, deleteTodo, editTodo, toggleCompleted }: propType) {
     return (
         <div className="flex gap-2 justify-between items-center border px-4 py-2 rounded my-2">
             <div className="flex items-center gap-4">
