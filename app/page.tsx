@@ -16,10 +16,7 @@ export default function Home() {
   const [todoTxt, setTodoTxt] = useState("")
   const [editTodoTxt, setEditTodoTxt] = useState("")
   const [editing, setEditing] = useState<null | string>(null)
-  const [allTodos, setAllTodos] = useState<TodoType[]>(() => {
-    const existingTodos = localStorage.getItem("todos")
-    return existingTodos ? JSON.parse(existingTodos) : []
-  })
+  const [allTodos, setAllTodos] = useState<TodoType[]>([])
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -39,11 +36,6 @@ export default function Home() {
       setEditTodoTxt("")
     }
   };
-
-  useEffect(() => {
-    const allTodosObj = JSON.stringify(allTodos)
-    localStorage.setItem("todos", allTodosObj)
-  }, [allTodos])
 
   const toggleCompleted = (id: string) => {
     const newTodos = allTodos.map((todo) => (todo.id === id ? { ...todo, completed: !todo.completed } : todo))
